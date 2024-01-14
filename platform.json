@@ -1,0 +1,54 @@
+{
+    "name": "egmicro",
+    "title": "egmicro MCU",
+    "description": "EGmicros MCU support",
+    "homepage": "https://www.egmicro.com/",
+    "license": "Apache-2.0",
+    "keywords": [
+        "ARM",
+        "Cortex-M0",
+        "egmicro"
+    ],
+    "repository": {
+      "type": "git",
+      "url": "https://github.com/microcai/platform-egmicros.git"
+    },
+    "engines": {
+        "platformio": "^5"
+    },
+    "version": "1.0.2",
+    "frameworks": {
+        "eg32firmlib": {
+            "package": "framework-eg32firmlib",
+            "script": "builder/frameworks/eg32firmlib.py",
+            "title": "EG32 Firmware Library"
+        }
+    },
+    "packages": {
+        "toolchain-gccarmnoneeabi": {
+            "type": "toolchain",
+            "owner": "platformio",
+            "version": ">=1.60301.0,<1.80000.0"
+        },
+        "framework-eg32firmlib": {
+            "type": "framework",
+            "version": "https://github.com/microcai/framework-eg32firmlib.git"
+        },
+        "tool-openocd-at32": {
+            "type": "uploader",
+            "version": "https://github.com/amoxu/tool-openocd-at32.git"
+        },
+        "tool-jlink": {
+            "type": "uploader",
+            "optional": true,
+            "owner": "platformio",
+            "version": "^1.77001.0"
+        },
+        "tool-dfuutil": {
+            "type": "uploader",
+            "optional": true,
+            "owner": "platformio",
+            "version": "~1.9.190708"
+          }
+    }
+}

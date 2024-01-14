@@ -1,0 +1,33 @@
+{
+  "build": {
+    "core": "EG6832",
+    "cpu": "cortex-m0",
+    "f_cpu": "72000000L",
+    "mcu": "EG6832",
+    "product_line": "EG6832",
+    "bsp": "EG6832",
+    "variant": "EG6832"
+  },
+  "debug": {
+    "openocd_target": "EG6832",
+    "svd_path": "EG32M0x.svd"
+  },
+  "frameworks": [
+    "eg32firmlib"
+  ],
+  "name": "EG6832 (8K RAM. 64K Flash)",
+  "upload": {
+    "maximum_ram_size": 8192,
+    "maximum_size": 65536,
+    "protocol": "cmsis-dap",
+    "protocols": [
+      "cmsis-dap",
+      "atlink",
+      "atlink_dap_v2",
+      "jlink",
+      "stlink"
+    ]
+  },
+  "url": "https://www.arterychip.com/en/product/AT32F437.jsp",
+  "vendor": "Generic"
+}
