@@ -34,6 +34,12 @@
             "type": "framework",
             "version": "https://github.com/microcai/framework-eg32firmlib.git"
         },
+        "tool-openocd": {
+            "type": "uploader",
+            "optional": true,
+            "owner": "platformio",
+            "version": "~3.1200.0"
+        },
         "tool-openocd-at32": {
             "type": "uploader",
             "version": "https://github.com/amoxu/tool-openocd-at32.git"
