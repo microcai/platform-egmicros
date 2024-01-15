@@ -78,7 +78,7 @@ if board.get("build.eg32firmlib.custom_system_setup", "no") == "no":
     ))
 
 libs.append(env.BuildLibrary(
-    join("$BUILD_DIR", "CMSIS"),
+    join("$BUILD_DIR", "LL_Driver"),
     join(FRAMEWORK_LIB_DIR, "EG32M0xx_LL_Driver", "src"),
     src_filter=[
         "+<*.c>",
