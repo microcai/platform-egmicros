@@ -9,7 +9,7 @@
     "variant": "EG6832"
   },
   "debug": {
-    "openocd_target": "stm32f0x.cfg",
+    "openocd_target": "stm32f0x",
     "svd_path": "EG32M0x.svd"
   },
   "frameworks": [
