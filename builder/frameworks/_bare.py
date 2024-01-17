@@ -38,7 +38,7 @@ env.Append(
         "-Wl,-Map,%s/linkmap.map" % env.get("BUILD_DIR")
     ],
 
-    LIBS=["c", "gcc", "m", "stdc++"]
+    LIBS=["c", "gcc", "m", "stdc++", "nosys"]
 )
 
 if "BOARD" in env:
