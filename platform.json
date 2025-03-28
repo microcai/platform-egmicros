@@ -22,6 +22,11 @@
             "package": "framework-eg32firmlib",
             "script": "builder/frameworks/eg32firmlib.py",
             "title": "EG32 Firmware Library"
+        },
+        "arduino": {
+            "package": "framework-arduino-eg32",
+            "script": "builder/frameworks/arduino.py",
+            "title": "EG32 arduino framework"
         }
     },
     "packages": {
@@ -33,6 +38,10 @@
         "framework-eg32firmlib": {
             "type": "framework",
             "version": "https://github.com/microcai/framework-eg32firmlib.git"
+        },
+        "framework-arduino-eg32": {
+            "type": "framework",
+            "version": "https://github.com/microcai/framework-arduino-eg32.git"
         },
         "tool-openocd": {
             "type": "uploader",

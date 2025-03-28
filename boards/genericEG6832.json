@@ -13,7 +13,7 @@
     "svd_path": "EG32M0x.svd"
   },
   "frameworks": [
-    "eg32firmlib"
+    "eg32firmlib", "arduino"
   ],
   "name": "EG6832 (8K RAM. 64K Flash)",
   "upload": {
