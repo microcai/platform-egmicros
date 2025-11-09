@@ -127,11 +127,11 @@ AlwaysBuild(target_size)
 #
 # Target: Upload by default .bin file
 #
-
 upload_protocol = env.subst("$UPLOAD_PROTOCOL")
-debug_tools = board.get("debug.tools", {})
-upload_source = target_firm
+debug_tools = env.BoardConfig().get("debug.tools", {})
+debug_server = debug_tools.get(upload_protocol, {}).get("server")
 upload_actions = []
+upload_source = target_firm
 
 if upload_protocol == "dfu":
     hwids = board.get("build.hwids", [["0x2E3C", "0xDF11"]])
@@ -171,7 +171,17 @@ if upload_protocol == "dfu":
 # custom upload tool
 elif upload_protocol == "custom":
     upload_actions = [env.VerboseAction("$UPLOADCMD", "Uploading $SOURCE")]
-
+elif debug_server and debug_server.get("package") == "tool-pyocd":
+    env.Replace(
+        UPLOADER=join(platform.get_package_dir("tool-pyocd") or "",
+                      "pyocd.py"),
+        UPLOADERFLAGS=['load'] + debug_server.get("arguments", [])[1:],
+        UPLOADCMD='"$PYTHONEXE" "$UPLOADER" $UPLOADERFLAGS $SOURCE'
+    )
+    upload_source = target_hex
+    upload_actions = [
+        env.VerboseAction("$UPLOADCMD", "Uploading $SOURCE")
+    ]
 else:
     sys.stderr.write("Warning! Unknown upload protocol %s\n" % upload_protocol)
 

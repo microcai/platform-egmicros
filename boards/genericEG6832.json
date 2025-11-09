@@ -11,7 +11,7 @@
   "debug": {
     "openocd_target": "stm32f0x",
     "svd_path": "EG32M0x.svd",
-    "pyocd_target": "eg32m0xx"
+    "pyocd_target": "eg6832"
   },
   "frameworks": [
     "eg32firmlib", "arduino"
