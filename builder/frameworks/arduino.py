@@ -50,7 +50,8 @@ env.Append(
 
 env.Append(
     CPPDEFINES=[
-        "USE_STDPERIPH_DRIVER"
+        "USE_STDPERIPH_DRIVER",
+        "ARDUINO"
     ]
 )
 

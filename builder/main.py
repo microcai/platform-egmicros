@@ -133,33 +133,7 @@ debug_tools = board.get("debug.tools", {})
 upload_source = target_firm
 upload_actions = []
 
-if upload_protocol in debug_tools:
-    openocd_args = [
-        "-d%d" % (2 if int(ARGUMENTS.get("PIOVERBOSE", 0)) else 1)
-    ]
-    openocd_args.extend(
-        debug_tools.get(upload_protocol).get("server").get("arguments", []))
-    openocd_args.extend([
-        "-c", "program {$SOURCE} %s verify reset; shutdown;" %
-        board.get("upload.offset_address", "")
-    ])
-    openocd_args = [
-        f.replace("$PACKAGE_DIR",
-                  platform.get_package_dir("tool-openocd-at32") or "")
-        for f in openocd_args
-    ]
-    env.Replace(
-        UPLOADER=join(
-            platform.get_package_dir("tool-openocd-at32") or "",
-            "bin-"+ get_systype(), "openocd.exe" if system()=="Windows" else "openocd"),
-        UPLOADERFLAGS=openocd_args,
-        UPLOADCMD="$UPLOADER $UPLOADERFLAGS")
-
-    if not board.get("upload").get("offset_address"):
-        upload_source = target_elf
-    upload_actions = [env.VerboseAction("$UPLOADCMD", "Uploading $SOURCE")]
-
-elif upload_protocol == "dfu":
+if upload_protocol == "dfu":
     hwids = board.get("build.hwids", [["0x2E3C", "0xDF11"]])
     vid = hwids[0][0]
     pid = hwids[0][1]
@@ -186,7 +160,7 @@ elif upload_protocol == "dfu":
                 "-p %s" % pid,
                 "-d 0xffff", "-a", "$TARGET"
             ]), "Adding dfu suffix to ${PROGNAME}.bin"))
-    
+
     env.Replace(
         UPLOADER=_upload_tool,
         UPLOADERFLAGS=_upload_flags,
