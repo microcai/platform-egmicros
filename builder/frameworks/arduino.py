@@ -78,7 +78,7 @@ if board.get("build.eg32firmlib.custom_system_setup", "no") == "no":
         join(FRAMEWORK_LIB_DIR, "Device", "EG32M0xx"),
         src_filter=[
             "+<*.c>",
-            "+<startup/arm/eg32m0xx_startup.c>"
+            "+<startup/gcc/startup.S>"
         ]
     ))
 

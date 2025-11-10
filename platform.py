@@ -75,3 +75,14 @@ class EgmicroPlatform(PlatformBase):
 
         board.manifest['debug'] = debug
         return board
+
+    def configure_debug_session(self, debug_config):
+        if debug_config.speed:
+            if "jlink" in (debug_config.server or {}).get("executable", "").lower():
+                debug_config.server["arguments"].extend(
+                    ["-speed", debug_config.speed]
+                )
+            elif "pyocd" in debug_config.server["package"]:
+                debug_config.server["arguments"].extend(
+                    ["--frequency", debug_config.speed]
+                )

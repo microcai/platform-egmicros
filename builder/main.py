@@ -131,7 +131,7 @@ upload_protocol = env.subst("$UPLOAD_PROTOCOL")
 debug_tools = env.BoardConfig().get("debug.tools", {})
 debug_server = debug_tools.get(upload_protocol, {}).get("server")
 upload_actions = []
-upload_source = target_firm
+upload_source = target_hex
 
 if upload_protocol == "dfu":
     hwids = board.get("build.hwids", [["0x2E3C", "0xDF11"]])
@@ -166,7 +166,7 @@ if upload_protocol == "dfu":
         UPLOADERFLAGS=_upload_flags,
         UPLOADCMD='$UPLOADER $UPLOADERFLAGS "${SOURCE.get_abspath()}"')
 
-    upload_source = target_firm
+    upload_source = target_hex
 
 # custom upload tool
 elif upload_protocol == "custom":
